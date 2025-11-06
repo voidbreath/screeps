@@ -3,11 +3,11 @@ var actionFindEnergy = {
     run: function(creep) {
         var storageStructures = creep.room.find(FIND_STRUCTURES, {
             filter: (structure) => {
-                return (structure.structureType == STRUCTURE_STORAGE ||
-                        structure.structureType == STRUCTURE_CONTAINER) &&
-                        structure.store[RESOURCE_ENERGY] > 0;
+            return (structure.structureType == STRUCTURE_STORAGE ||
+                structure.structureType == STRUCTURE_CONTAINER) &&
+                structure.store[RESOURCE_ENERGY] > 0;
             }
-        });
+        }).sort((a, b) => creep.pos.getRangeTo(a) - creep.pos.getRangeTo(b));
         
         if(storageStructures.length > 0 && creep.store.getFreeCapacity() > 0) {
             if(creep.withdraw(storageStructures[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
