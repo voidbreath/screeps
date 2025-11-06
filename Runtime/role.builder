@@ -1,3 +1,5 @@
+findEnergy = require('action.findEnergy');
+
 var roleBuilder = {
 
     /** @param {Creep} creep **/

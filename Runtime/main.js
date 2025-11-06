@@ -37,11 +37,11 @@ module.exports.loop = function () {
         var newName = 'Harvester' + Game.time;
         console.log('Spawning new harvester: ' + newName);
         // early harvester to bootstrap energy collection
-        //Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName,
-        //    {memory: {role: 'harvester'}});
-        //stronger harvester without storage for use with energy storage structures
-        Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,CARRY,MOVE], bigHarvester,
+        Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName,
             {memory: {role: 'harvester'}});
+        //stronger harvester without storage for use with energy storage structures
+        //Game.spawns['Spawn1'].spawnCreep([WORK,WORK,WORK,CARRY,MOVE], bigHarvester,
+        //    {memory: {role: 'harvester'}});
     }
     
     if(builders.length < 1 && !Game.spawns['Spawn1'].spawning) {

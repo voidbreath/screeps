@@ -1,3 +1,5 @@
+findEnergy = require('action.findEnergy');
+
 var roleUpgrader = {
 
     /** @param {Creep} creep **/
