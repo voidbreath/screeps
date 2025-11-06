@@ -9,7 +9,7 @@ var actionFindEnergy = {
             }
         }).sort((a, b) => creep.pos.getRangeTo(a) - creep.pos.getRangeTo(b));
         
-        if(storageStructures.length > 0 && creep.store.getFreeCapacity() > 0) {
+        if(storageStructures.length > 0 && creep.store.getFreeCapacity() > creep.store.getCapacity()) {
             if(creep.withdraw(storageStructures[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(storageStructures[0], {visualizePathStyle: {stroke: '#ffaa00'}});
             }
