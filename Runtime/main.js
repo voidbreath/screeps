@@ -60,14 +60,14 @@ module.exports.loop = function () {
     }
     
     
-    if(repairers.length < 1 && !Game.spawns['Spawn1'].spawning && Structure.storedEnergy > 300) {
+    if(repairers.length < 1 && !Game.spawns['Spawn1'].spawning && Game.spawns['Spawn1'].store.getUsedCapacity(RESOURCE_ENERGY) > 300) {
         var newName = 'Repairer' + Game.time;
         console.log('Spawning new upgrader: ' + newName);
         Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName,
             {memory: {role: 'repairer'}});
     }
 
-    if(suppliers.length < 1 && !Game.spawns['Spawn1'].spawning && creep.room.find(FIND_STRUCTURES, {
+    if(suppliers.length < 1 && !Game.spawns['Spawn1'].spawning && Game.spawns['Spawn1'].room.find(FIND_STRUCTURES, {
         filter: (structure) => {
             return (structure.structureType == STRUCTURE_CONTAINER ||
                 structure.structureType == STRUCTURE_STORAGE)}}).length > 0) {
@@ -99,6 +99,9 @@ module.exports.loop = function () {
         }
         if(creep.memory.role == 'repairer') {
             roleRepairer.run(creep);
+        }
+        if(creep.memory.role == 'supplier') {
+            roleSupplier.run(creep);
         }
     }
 }
