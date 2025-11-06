@@ -32,6 +32,7 @@ module.exports.loop = function () {
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
+    var suppliers = _.filter(Game.creeps, (creep) => creep.memory.role == 'supplier');
 
     if(harvesters.length < 1 && !Game.spawns['Spawn1'].spawning) {
         var newName = 'Harvester' + Game.time;
