@@ -55,7 +55,7 @@ module.exports.loop = function () {
     }
     
     
-    if(repairers.length < 1 && !Game.spawns['Spawn1'].spawning) {
+    if(repairers.length < 1 && !Game.spawns['Spawn1'].spawning && creep.room.find(StructureExtension).length >= 5) {
         var newName = 'Repairer' + Game.time;
         console.log('Spawning new upgrader: ' + newName);
         Game.spawns['Spawn1'].spawnCreep([WORK,CARRY,MOVE], newName,
