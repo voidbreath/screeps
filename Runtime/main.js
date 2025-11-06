@@ -66,6 +66,16 @@ module.exports.loop = function () {
             {memory: {role: 'repairer'}});
     }
 
+    if(suppliers.length < 1 && !Game.spawns['Spawn1'].spawning && creep.room.find(FIND_STRUCTURES, {
+        filter: (structure) => {
+            return (structure.structureType == STRUCTURE_CONTAINER ||
+                structure.structureType == STRUCTURE_STORAGE)}}).length > 0) {
+        var newName = 'Supplier' + Game.time;
+        console.log('Spawning new supplier: ' + newName);
+        Game.spawns['Spawn1'].spawnCreep([CARRY,CARRY,MOVE,MOVE], newName,
+            {memory: {role: 'supplier'}});
+    }
+
     if(Game.spawns['Spawn1'].spawning) {
         var spawningCreep = Game.creeps[Game.spawns['Spawn1'].spawning.name];
         Game.spawns['Spawn1'].room.visual.text(

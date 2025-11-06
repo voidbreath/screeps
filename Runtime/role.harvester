@@ -37,7 +37,7 @@ var roleHarvester = {
             }
         }
         else {
-            findEnergy.run(creep);
+            creep.harvest
         }
     }
 };
